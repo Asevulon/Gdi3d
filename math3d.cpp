@@ -119,10 +119,12 @@ mat4& mat4::scale(float x, float y, float z)
 	return *this;
 }
 
-mat4& mat4::perspective(float center)
+mat4& mat4::perspective(double x, double y, double z)
 {
 	mat4 per;
-	per._matrix[0][3] = -1. / center;
+	if(x)per._matrix[0][3] = -1. / x;
+	if(y)per._matrix[1][3] = -1. / y;
+	if(z)per._matrix[2][3] = -1. / z;
 	*this = *this * per;
 	return *this;
 }
@@ -160,3 +162,7 @@ vec4 vec4::operator * (const mat4& right)
 }
 
 
+void vec4::normalize()
+{
+	for (int i = 0; i < _size; i++)_vector[i] /= _vector[_size - 1];
+}

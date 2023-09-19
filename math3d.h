@@ -53,7 +53,7 @@ namespace math3d
 		mat4 &scale(float x, float y, float z);
 
 		// ѕерспективное преобразование вдоль оси X
-		mat4 &perspective(float center);
+		mat4& mat4::perspective(double x, double y, double z);
 	};
 
 	// ------------------------------------------------------------
@@ -88,5 +88,7 @@ namespace math3d
 
 		// ѕолучить ссылку на координату Z
 		float &z() const { return (float &)_vector[2]; }
+
+		void normalize();
 	};
 }
